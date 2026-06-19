@@ -1,15 +1,19 @@
 body {
     margin: 0;
     overflow: hidden;
+    width: 100vw;
     height: 100vh;
-    background: url("amor.jpg");
-    background-size: cover; /* Cambiado a cover para que llene mejor la pantalla */
+
+    /* Configuración avanzada para fondo completo */
+    background-image: url("amor.jpg");
+    background-size: cover;          /* Llena todo el espacio disponible */
+    background-position: center center; /* Centra la imagen perfectamente */
     background-repeat: no-repeat;
-    background-position: center center;
+    background-attachment: fixed;    /* Mantiene el fondo fijo y estable */
     background-color: black;
+
     font-family: Georgia, serif;
 }
-
 /* CAPA OSCURA */
 .overlay {
     position: absolute;
