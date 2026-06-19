@@ -104,3 +104,57 @@ no.addEventListener("touchstart", (e) => {
 document.getElementById("si").onclick = () => {
     alert("❤️ ¡Sabía que ibas a decir que tú! Correcto preciosa, Te quiero. ❤️");
 };
+/* CONTENIDO DE LA CARTA (ESCENA 3) */
+const textoCartaBase = `Jacqueline...
+
+Eres mi lugar seguro.
+Mi niña.
+Mi preciosa.
+Mi corazón bonito.
+Gracias por existir. ❤️
+
+Con amor,
+Polar`;
+
+let j = 0;
+let contenidoCarta = "";
+
+function escribirCarta() {
+    if (j < textoCartaBase.length) {
+        contenidoCarta += textoCartaBase.charAt(j);
+        document.getElementById("textoCarta").innerHTML = contenidoCarta;
+        j++;
+        setTimeout(escribirCarta, 50); // Velocidad de escritura de la carta
+    }
+}
+
+/* ACCIÓN AL PRESIONAR "SÍ" -> AVANZAR A ESCENA 3 */
+document.getElementById("si").onclick = () => {
+    // 1. Desvanecer Escena 2
+    document.getElementById("escena2").style.opacity = "0";
+
+    setTimeout(() => {
+        document.getElementById("escena2").classList.add("oculto");
+        
+        // 2. Mostrar Escena 3
+        const escena3 = document.getElementById("escena3");
+        escena3.classList.remove("oculto");
+        escena3.style.display = "flex";
+        escena3.style.flexDirection = "column";
+        
+        // Pequeño delay para la transición de opacidad
+        setTimeout(() => {
+            escena3.style.opacity = "1";
+            
+            // 3. Activar animación del sobre (Abrir y subir carta)
+            setTimeout(() => {
+                const sobre = document.querySelector(".envelope");
+                sobre.classList.add("open");
+                
+                // 4. Iniciar la máquina de escribir de la carta una vez arriba
+                setTimeout(escribirCarta, 2200); 
+            }, 1000);
+
+        }, 50);
+    }, 1000);
+};
