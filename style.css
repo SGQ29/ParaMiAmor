@@ -3,28 +3,26 @@ body {
     overflow: hidden;
     width: 100vw;
     height: 100vh;
-
-    /* Configuración avanzada para fondo completo */
     background-image: url("amor.jpg");
-    background-size: cover;          /* Llena todo el espacio disponible */
-    background-position: center center; /* Centra la imagen perfectamente */
+    background-size: cover;
+    background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed;    /* Mantiene el fondo fijo y estable */
+    background-attachment: fixed;
     background-color: black;
-
-    font-family: Georgia, serif;
+    font-family: 'Georgia', serif;
 }
-/* CAPA OSCURA */
+
+/* CAPA OSCURA GENERAL */
 .overlay {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.55); /* Un toque más oscuro para leer mejor el texto */
-    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.65); /* Un toque más oscuro para legibilidad total */
+    backdrop-filter: blur(5px);
     z-index: 1;
 }
 
-/* CONTENEDORES */
+/* CONTENEDOR DE ESCENAS */
 .container {
     position: absolute;
     top: 50%;
@@ -33,7 +31,7 @@ body {
     text-align: center;
     z-index: 10;
     opacity: 1;
-    transition: opacity 1s ease;
+    transition: opacity 0.8s ease, transform 0.8s ease;
     width: 90%;
     max-width: 600px;
 }
@@ -43,142 +41,200 @@ body {
     opacity: 0;
 }
 
-/* FOTO PRINCIPAL */
-#fotoPrincipal {
-    width: 350px;
-    max-width: 85vw;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 25px;
-    box-shadow: 0 0 25px hotpink, 0 0 50px deeppink;
-    margin-bottom: 25px;
-    animation: latirFoto 3s infinite ease-in-out;
-}
-
-@keyframes latirFoto {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.03); }
-}
-
-/* TEXTO */
-#texto {
-    color: white;
-    font-size: clamp(24px, 5vw, 42px); /* Se adapta mejor a pantallas de celulares */
-    line-height: 1.5;
-    min-height: 180px;
-    text-shadow: 0 0 10px pink, 0 0 20px hotpink;
-    margin-bottom: 20px;
-}
-
-/* BOTÓN PRINCIPAL */
-#boton {
-    padding: 18px 45px;
-    font-size: 22px;
+/* BOTÓN ESTILIZADO ROMÁNTICO */
+.btn-principal {
+    padding: 16px 40px;
+    font-size: 20px;
     border: none;
     border-radius: 40px;
     cursor: pointer;
     background: linear-gradient(45deg, #ff4fa2, #ff8fc7);
     color: white;
     box-shadow: 0 0 25px hotpink;
-    transition: 0.3s;
-    animation: latir 1.5s infinite;
+    transition: 0.3s ease;
+    font-family: 'Georgia', serif;
 }
 
-#boton:hover {
-    transform: scale(1.05);
+.btn-principal:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 35px #ff4fa2;
 }
 
-@keyframes latir {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+/* ELEMENTOS ESCENA 1 */
+#fotoPrincipal {
+    width: 320px;
+    max-width: 80vw;
+    max-height: 380px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 0 25px hotpink, 0 0 50px deeppink;
+    margin-bottom: 25px;
 }
 
-/* ESTRELLAS */
-.star {
+#texto {
+    color: white;
+    font-size: clamp(22px, 4.5vw, 36px);
+    line-height: 1.5;
+    min-height: 160px;
+    text-shadow: 0 0 10px pink, 0 0 20px hotpink;
+    margin-bottom: 25px;
+}
+
+/* TITULOS INTERMEDIOS */
+.titulo-escena {
+    color: white;
+    font-size: clamp(26px, 6vw, 38px);
+    text-shadow: 0 0 15px hotpink;
+    margin-bottom: 20px;
+}
+
+.subtitulo-escena {
+    color: #ffb6d9;
+    font-size: 16px;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.texto-intermedio {
+    color: #fff;
+    font-size: clamp(18px, 4vw, 24px);
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* TARJETAS INTERACTIVAS (ESCENA 3) */
+.tarjetas-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.tarjeta {
+    background-color: transparent;
+    width: 160px;
+    height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.tarjeta-interior {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-radius: 15px;
+}
+
+.tarjeta.revelada .tarjeta-interior {
+    transform: rotateY(180deg);
+}
+
+.tarjeta-frente, .tarjeta-atras {
     position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.tarjeta-frente {
+    background: linear-gradient(135deg, #ff75b5, #ffb6d9);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid #fff;
+}
+
+.tarjeta-atras {
     background: white;
-    border-radius: 50%;
-    animation: parpadear 2s infinite ease-in-out;
-    z-index: 2;
+    color: #333;
+    transform: rotateY(180deg);
+    font-size: 14px;
+    line-height: 1.4;
+    border: 2px solid #ff75b5;
 }
 
-@keyframes parpadear {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 1; }
-}
-
-/* CORAZONES */
-.corazon {
-    position: absolute;
-    font-size: 25px;
-    animation: subir 6s linear forwards;
-    z-index: 15;
-}
-
-@keyframes subir {
-    0% {
-        transform: translateY(105vh) scale(0.8);
-        opacity: 0;
-    }
-    10% { opacity: 1; }
-    100% {
-        transform: translateY(-20vh) scale(1.2);
-        opacity: 0;
-    }
-}
-
-/* ESCENA 2 */
+/* ESCENA 4: PREGUNTA Y BOTONES */
 .pregunta {
     color: white;
-    font-size: clamp(26px, 6vw, 40px);
+    font-size: clamp(24px, 5.5vw, 36px);
     line-height: 1.4;
-    text-shadow: 0 0 10px pink, 0 0 20px hotpink;
+    text-shadow: 0 0 15px hotpink;
 }
 
-.botones {
+.botones-container {
     margin-top: 40px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     flex-wrap: wrap;
 }
 
 #si, #no {
-    padding: 15px 35px;
-    font-size: 22px;
+    padding: 14px 35px;
+    font-size: 20px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
     transition: transform 0.2s ease, left 0.2s ease, top 0.2s ease;
+    font-family: 'Georgia', serif;
 }
 
 #si {
-    background: #ff5fa2;
+    background: #ff4fa2;
     color: white;
     box-shadow: 0 0 20px hotpink;
 }
 
-#si:hover {
-    transform: scale(1.1);
-}
+#si:hover { transform: scale(1.1); }
 
 #no {
     background: #ff9ac9;
     color: white;
-    box-shadow: 0 0 20px pink;
-    z-index: 99; /* Asegura que el botón que huye quede por encima */
-}
-/* ESCENA 3 - SOBRE Y CARTA */
-#escena3 {
-    display: none;
-    opacity: 0;
-    transition: opacity 1.5s ease;
+    box-shadow: 0 0 15px pink;
+    z-index: 99;
 }
 
+/* EFECTOS AMBIENTALES: ESTRELLAS Y CORAZONES */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: parpadear 2.5s infinite ease-in-out;
+    z-index: 2;
+}
+
+@keyframes parpadear { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+
+.corazon {
+    position: absolute;
+    font-size: 24px;
+    animation: subir 5s linear forwards;
+    z-index: 15;
+}
+
+@keyframes subir {
+    0% { transform: translateY(105vh) scale(0.7); opacity: 0; }
+    15% { opacity: 1; }
+    100% { transform: translateY(-15vh) scale(1.3); opacity: 0; }
+}
+
+/* ESCENA 5: EL SOBRE ANIMADO */
 .envelope-wrapper {
     position: relative;
-    width: 300px;
-    height: 200px;
+    width: 320px;
+    height: 220px;
     margin: 0 auto;
 }
 
@@ -186,76 +242,62 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: #ff8fc7; /* Color del sobre */
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    background-color: #ff8fc7;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-/* Pestaña del sobre (triángulo superior) */
 .flap {
     position: absolute;
     top: 0;
     left: 0;
-    border-left: 150px solid transparent;
-    border-right: 150px solid transparent;
-    border-top: 110px solid #ff4fa2; /* Color de la pestaña */
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 115px solid #ff4fa2;
     transform-origin: top;
-    transition: transform 0.6s ease 0.5s; /* Se abre después de un momento */
+    transition: transform 0.7s ease 0.3s;
     z-index: 4;
 }
 
-/* Bolsillo del sobre */
 .pocket {
     position: absolute;
     top: 0;
     left: 0;
     width: 0;
     height: 0;
-    border-left: 150px solid #ff75b5;
-    border-right: 150px solid #ff75b5;
-    border-bottom: 100px solid #ff5fa2;
-    border-top: 100px solid transparent;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-left: 160px solid #ff75b5;
+    border-right: 160px solid #ff75b5;
+    border-bottom: 110px solid #ff5fa2;
+    border-top: 110px solid transparent;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
     z-index: 3;
 }
 
-/* La hoja de papel interna */
 .letter {
     position: absolute;
-    bottom: 5px;
+    bottom: 8px;
     left: 15px;
-    width: 270px;
-    height: 180px;
+    width: 290px;
+    height: 195px;
     background-color: #fff;
-    border-radius: 5px;
-    padding: 15px;
+    border-radius: 8px;
+    padding: 20px;
     box-sizing: border-box;
-    overflow-y: auto; /* Por si el texto es largo en pantallas chicas */
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    transition: transform 1s ease 1.2s, height 1s ease 1.2s; /* Sale después de abrir el sobre */
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    transition: transform 1.2s ease 1s, height 1.2s ease 1s;
     z-index: 2;
 }
 
-/* Texto dentro de la carta */
 .letter-text {
     font-family: 'Georgia', serif;
-    color: #333;
-    font-size: 14px;
+    color: #2c2c2c;
+    font-size: 15px;
     line-height: 1.6;
     text-align: left;
-    white-space: pre-line; /* Respeta los saltos de línea */
+    white-space: pre-line;
 }
 
-/* CLASES DE ANIMACIÓN (Se activan con JS) */
-.envelope.open .flap {
-    transform: rotateX(180deg);
-    z-index: 1; /* Pasa atrás al abrirse */
-}
-
-.envelope.open .letter {
-    transform: translateY(-130px); /* Hace que la carta suba */
-    height: 250px; /* Se estira para mostrar más texto */
-    z-index: 5; /* Pasa al frente de todo */
-}
+.envelope.open .flap { transform: rotateX(180deg); z-index: 1; }
+.envelope.open .letter { transform: translateY(-140px); height: 280px; z-index: 5; }
