@@ -1,4 +1,4 @@
-// Texto de bienvenida formateado para soportar los saltos de línea correctamente
+// 1. MÁQUINA DE ESCRIBIR (ESCENA 1)
 const textoBase = `Oye...
 Preciosa de mi vida...
 Tengo algo importante que decirte...
@@ -18,17 +18,15 @@ function escribir() {
             i++;
         }
         document.getElementById("texto").innerHTML = textoActual;
-        setTimeout(escribir, 60);
+        setTimeout(escribir, 55);
     }
 }
-
-// Iniciar máquina de escribir
 escribir();
 
-/* ESTRELLAS */
+/* ESTRELLAS DE FONDO */
 function estrellas() {
     const contenedorEstrellas = document.getElementById("stars");
-    for (let i = 0; i < 120; i++) {
+    for (let i = 0; i < 100; i++) {
         let estrella = document.createElement("div");
         estrella.className = "star";
         estrella.style.width = "2px";
@@ -40,7 +38,7 @@ function estrellas() {
 }
 estrellas();
 
-/* CORAZONES FLOATING */
+/* LLUVIA DE CORAZONES */
 function corazones() {
     let c = document.createElement("div");
     c.className = "corazon";
@@ -48,42 +46,66 @@ function corazones() {
     c.style.left = Math.random() * 95 + "vw";
     c.style.top = "100vh";
     document.body.appendChild(c);
-
-    setTimeout(() => {
-        c.remove();
-    }, 6000);
+    setTimeout(() => { c.remove(); }, 5000);
 }
-setInterval(corazones, 600);
+setInterval(corazones, 700);
 
-/* CAMBIO DE ESCENA */
-const boton = document.getElementById("boton");
-boton.onclick = () => {
-    let musica = document.getElementById("musica");
-    musica.play().catch(() => {
-        console.log("El navegador bloqueó el autoplay, se requiere interacción previa.");
-    });
-
-    document.getElementById("escena1").style.opacity = "0";
-
+/* LÓGICA DE NAVEGACIÓN ENTRE ESCENAS */
+function cambiarEscena(actualId, siguienteId, esFlex = true) {
+    const actual = document.getElementById(actualId);
+    const siguiente = document.getElementById(siguienteId);
+    
+    actual.style.opacity = "0";
     setTimeout(() => {
-        document.getElementById("escena1").classList.add("oculto");
-        const escena2 = document.getElementById("escena2");
-        escena2.classList.remove("oculto");
-        escena2.style.display = "flex";
-        escena2.style.flexDirection = "column";
-    }, 1000);
+        actual.classList.add("oculto");
+        siguiente.classList.remove("oculto");
+        siguiente.style.display = esFlex ? "flex" : "block";
+        if (esFlex) siguiente.style.flexDirection = "column";
+        setTimeout(() => { siguiente.style.opacity = "1"; }, 50);
+    }, 800);
+}
+
+// Botón Escena 1 -> Escena 2
+document.getElementById("boton1").onclick = () => {
+    let musica = document.getElementById("musica");
+    musica.play().catch(() => console.log("Interacción requerida para audio."));
+    cambiarEscena("escena1", "escena2");
 };
 
-/* BOTÓN HUIDIZO ("NO") */
-const no = document.getElementById("no");
+// Botón Escena 2 -> Escena 3
+document.getElementById("boton2").onclick = () => {
+    cambiarEscena("escena2", "escena3");
+};
 
+// Control de las Tarjetas de la Escena 3
+let tarjetasClickeadas = 0;
+function revelarTarjeta(elemento) {
+    if (!elemento.classList.contains("revelada")) {
+        elemento.classList.add("revelada");
+        tarjetasClickeadas++;
+        
+        // Si clickea las 3 tarjetas, aparece el botón para continuar
+        if (tarjetasClickeadas === 3) {
+            setTimeout(() => {
+                const btn3 = document.getElementById("boton3");
+                btn3.classList.remove("oculto");
+                btn3.style.opacity = "1";
+            }, 600);
+        }
+    }
+}
+
+// Botón Escena 3 -> Escena 4
+document.getElementById("boton3").onclick = () => {
+    cambiarEscena("escena3", "escena4");
+};
+
+/* BOTÓN HUYENTE "NO" (ESCENA 4) */
+const no = document.getElementById("no");
 const moverBotonNo = () => {
-    const padding = 60;
-    // Calcula posiciones aleatorias seguras dentro de la ventana del navegador
+    const padding = 65;
     let x = Math.random() * (window.innerWidth - no.clientWidth - padding);
     let y = Math.random() * (window.innerHeight - no.clientHeight - padding);
-
-    // Asegura que no se salga por los bordes superiores o izquierdos
     if (x < padding) x = padding;
     if (y < padding) y = padding;
 
@@ -92,19 +114,10 @@ const moverBotonNo = () => {
     no.style.top = y + "px";
     no.style.margin = "0";
 };
-
-// Evento para computadoras (Mouse) y dispositivos móviles (Touch)
 no.addEventListener("mouseover", moverBotonNo);
-no.addEventListener("touchstart", (e) => {
-    e.preventDefault(); // Evita el click accidental en móviles al intentar tocarlo
-    moverBotonNo();
-});
+no.addEventListener("touchstart", (e) => { e.preventDefault(); moverBotonNo(); });
 
-/* ACCIÓN BOTÓN "SÍ" */
-document.getElementById("si").onclick = () => {
-    alert("❤️ ¡Sabía que ibas a decir que tú! Correcto preciosa, Te quiero. ❤️");
-};
-/* CONTENIDO DE LA CARTA (ESCENA 3) */
+/* BOTÓN "SÍ" -> AVANZAR A CARTA FINAL (ESCENA 5) */
 const textoCartaBase = `Jacqueline...
 
 Eres mi lugar seguro.
@@ -124,37 +137,17 @@ function escribirCarta() {
         contenidoCarta += textoCartaBase.charAt(j);
         document.getElementById("textoCarta").innerHTML = contenidoCarta;
         j++;
-        setTimeout(escribirCarta, 50); // Velocidad de escritura de la carta
+        setTimeout(escribirCarta, 50);
     }
 }
 
-/* ACCIÓN AL PRESIONAR "SÍ" -> AVANZAR A ESCENA 3 */
 document.getElementById("si").onclick = () => {
-    // 1. Desvanecer Escena 2
-    document.getElementById("escena2").style.opacity = "0";
-
+    cambiarEscena("escena4", "escena5");
+    
+    // Activar sobre mágico tras desplegar escena
     setTimeout(() => {
-        document.getElementById("escena2").classList.add("oculto");
-        
-        // 2. Mostrar Escena 3
-        const escena3 = document.getElementById("escena3");
-        escena3.classList.remove("oculto");
-        escena3.style.display = "flex";
-        escena3.style.flexDirection = "column";
-        
-        // Pequeño delay para la transición de opacidad
-        setTimeout(() => {
-            escena3.style.opacity = "1";
-            
-            // 3. Activar animación del sobre (Abrir y subir carta)
-            setTimeout(() => {
-                const sobre = document.querySelector(".envelope");
-                sobre.classList.add("open");
-                
-                // 4. Iniciar la máquina de escribir de la carta una vez arriba
-                setTimeout(escribirCarta, 2200); 
-            }, 1000);
-
-        }, 50);
-    }, 1000);
+        const sobre = document.querySelector(".envelope");
+        sobre.classList.add("open");
+        setTimeout(escribirCarta, 2200);
+    }, 1200);
 };
