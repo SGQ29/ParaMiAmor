@@ -168,3 +168,94 @@ body {
     box-shadow: 0 0 20px pink;
     z-index: 99; /* Asegura que el botón que huye quede por encima */
 }
+/* ESCENA 3 - SOBRE Y CARTA */
+#escena3 {
+    display: none;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.envelope-wrapper {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #ff8fc7; /* Color del sobre */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Pestaña del sobre (triángulo superior) */
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 110px solid #ff4fa2; /* Color de la pestaña */
+    transform-origin: top;
+    transition: transform 0.6s ease 0.5s; /* Se abre después de un momento */
+    z-index: 4;
+}
+
+/* Bolsillo del sobre */
+.pocket {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid #ff75b5;
+    border-right: 150px solid #ff75b5;
+    border-bottom: 100px solid #ff5fa2;
+    border-top: 100px solid transparent;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    z-index: 3;
+}
+
+/* La hoja de papel interna */
+.letter {
+    position: absolute;
+    bottom: 5px;
+    left: 15px;
+    width: 270px;
+    height: 180px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow-y: auto; /* Por si el texto es largo en pantallas chicas */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: transform 1s ease 1.2s, height 1s ease 1.2s; /* Sale después de abrir el sobre */
+    z-index: 2;
+}
+
+/* Texto dentro de la carta */
+.letter-text {
+    font-family: 'Georgia', serif;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+    white-space: pre-line; /* Respeta los saltos de línea */
+}
+
+/* CLASES DE ANIMACIÓN (Se activan con JS) */
+.envelope.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1; /* Pasa atrás al abrirse */
+}
+
+.envelope.open .letter {
+    transform: translateY(-130px); /* Hace que la carta suba */
+    height: 250px; /* Se estira para mostrar más texto */
+    z-index: 5; /* Pasa al frente de todo */
+}
