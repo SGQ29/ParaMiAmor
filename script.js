@@ -196,12 +196,14 @@ const boton=document.getElementById("boton");
 
 
 
+const boton=document.getElementById("boton");
+
+
+
 boton.onclick=function(){
 
 
-
 let musica=document.getElementById("musica");
-
 
 
 musica.play();
@@ -209,34 +211,23 @@ musica.play();
 
 
 
-boton.innerHTML="❤️ Gracias por estar aquí ❤️";
+document.getElementById("escena1").style.opacity="0";
 
-
-
-
-document.getElementById("texto").innerHTML="";
-
-
-document.getElementById("texto").innerHTML=`
-Jacqueline...
-
-Antes de continuar...
-
-Quiero hacerte una pequeña pregunta ❤️
-`;
 
 
 
 setTimeout(()=>{
 
 
-boton.innerHTML="😊 Estoy lista";
+document.getElementById("escena1").style.display="none";
 
 
 
-},2000);
+document.getElementById("escena2").style.display="block";
 
 
+
+},1000);
 
 
 }
