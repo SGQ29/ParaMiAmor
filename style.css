@@ -6,7 +6,7 @@ overflow:hidden;
 width:100vw;
 height:100vh;
 
-font-family:Georgia;
+font-family:Georgia,serif;
 
 background:url("amor.jpg");
 background-size:cover;
@@ -17,30 +17,29 @@ background-attachment:fixed;
 }
 
 
-
-/*================================*/
-/* CAPA OSCURA */
-/*================================*/
+/*===========================*/
+/* Overlay */
+/*===========================*/
 
 .overlay{
 
 position:absolute;
+
 width:100%;
 height:100%;
 
-background:rgba(0,0,0,.72);
+background:rgba(0,0,0,.78);
 
-backdrop-filter:blur(4px);
+backdrop-filter:blur(6px);
 
 z-index:1;
 
 }
 
 
-
-/*================================*/
-/* ESCENAS */
-/*================================*/
+/*===========================*/
+/* Escenas */
+/*===========================*/
 
 .container{
 
@@ -51,17 +50,16 @@ left:50%;
 
 transform:translate(-50%,-50%);
 
+width:90%;
+max-width:900px;
+
 text-align:center;
 
 z-index:10;
 
-width:90%;
-max-width:900px;
-
-transition:1s;
+animation:fade .8s;
 
 }
-
 
 .oculto{
 
@@ -69,968 +67,675 @@ display:none;
 
 }
 
+@keyframes fade{
+
+from{
+
+opacity:0;
+transform:translate(-50%,-45%);
+
+}
+
+to{
+
+opacity:1;
+transform:translate(-50%,-50%);
+
+}
+
+}
 
 
-
-
-/*================================*/
-/* BOTONES */
-/*================================*/
+/*===========================*/
+/* Botones */
+/*===========================*/
 
 .btn-principal{
 
+padding:16px 40px;
 
-padding:18px 45px;
-
-
-font-size:21px;
-
-
-cursor:pointer;
-
+font-size:20px;
 
 border:none;
 
-
 border-radius:50px;
 
-
-
-background:linear-gradient(
-45deg,
-#4b0018,
-#6d1b7b
-);
-
-
+cursor:pointer;
 
 color:white;
 
-
+background:linear-gradient(
+45deg,
+#4a0018,
+#5f2380
+);
 
 box-shadow:
 
 0 0 15px #6d1b7b,
+0 0 30px #4a0018;
 
-0 0 35px #4b0018;
+transition:.4s;
 
-
-
-transition:.5s;
-
-
-margin-top:35px;
-
+margin-top:30px;
 
 }
-
-
 
 .btn-principal:hover{
 
-
 transform:scale(1.05);
-
-
 
 box-shadow:
 
-0 0 25px #8b0000,
-
-0 0 60px purple;
-
+0 0 20px #a0003c,
+0 0 50px purple;
 
 }
 
 
 
-
-
-
-
-/*================================*/
-/* ESCENA 1 */
-/*================================*/
-
+/*===========================*/
+/* Escena 1 */
+/*===========================*/
 
 #fotoPrincipal{
 
-
 width:340px;
-
 max-width:85vw;
 
-
-border-radius:30px;
-
-
+border-radius:25px;
 
 box-shadow:
 
+0 0 25px purple,
+0 0 50px darkred;
 
-0 0 20px #6d1b7b,
-
-0 0 50px #8b0000;
-
-
-
-margin-bottom:30px;
-
-
-
-animation:latirFoto 3s infinite;
-
-
+animation:latir 3s infinite;
 
 }
 
 
-
-
-@keyframes latirFoto{
-
+@keyframes latir{
 
 0%{
 transform:scale(1);
 }
 
-
 50%{
 transform:scale(1.02);
 }
-
 
 100%{
 transform:scale(1);
 }
 
-
 }
-
-
 
 
 
 #texto{
 
+color:#ffffff;
 
-color:white;
+font-size:34px;
 
-
-font-size:36px;
-
-
-line-height:60px;
-
+line-height:55px;
 
 min-height:180px;
 
-
-
 text-shadow:
 
-
-0 0 10px #8b0000,
-
-0 0 25px #6d1b7b;
-
-
+0 0 10px purple,
+0 0 25px crimson;
 
 }
 
 
 
-
-
-/*================================*/
-/* TITULOS */
-/*================================*/
-
+/*===========================*/
+/* Titulos */
+/*===========================*/
 
 .titulo-escena{
 
-
-color:white;
-
-
+color:#ffffff;
 
 font-size:42px;
 
-
-
 text-shadow:
 
-
-0 0 15px #6d1b7b,
-
+0 0 10px #8d48ff,
 0 0 30px #8b0000;
 
-
-
 }
-
 
 
 .subtitulo-escena{
 
-
-color:#d0b3ff;
-
+color:#d6b3ff;
 
 font-size:18px;
 
-
-margin-bottom:30px;
-
-
 }
-
-
 
 
 .texto-intermedio{
 
+color:#f5f5f5;
 
-color:white;
+font-size:24px;
 
-
-font-size:25px;
-
-
-line-height:45px;
-
-
+line-height:42px;
 
 text-shadow:
 
-
-0 0 10px #6d1b7b;
-
+0 0 10px black;
 
 }
 
 
 
 
-
-/*================================*/
-/* TARJETAS */
-/*================================*/
-
+/*===========================*/
+/* Tarjetas */
+/*===========================*/
 
 .tarjetas-container{
 
-
 display:flex;
-
 
 justify-content:center;
 
-
 gap:20px;
-
 
 flex-wrap:wrap;
 
-
 margin-top:30px;
 
-
 }
-
 
 
 
 .tarjeta{
 
-
 width:180px;
-
-
 height:220px;
-
 
 perspective:1000px;
 
-
 cursor:pointer;
 
-
 }
-
 
 
 
 .tarjeta-interior{
 
-
-position:relative;
-
-
 width:100%;
 height:100%;
 
-
+position:relative;
 
 transform-style:preserve-3d;
 
-
 transition:.8s;
 
-
 }
-
-
 
 .tarjeta.revelada .tarjeta-interior{
 
-
 transform:rotateY(180deg);
 
-
 }
-
 
 
 
 .tarjeta-frente,
 .tarjeta-atras{
 
-
 position:absolute;
-
 
 width:100%;
 height:100%;
 
-
+border-radius:25px;
 
 backface-visibility:hidden;
 
-
-
 display:flex;
-
 
 align-items:center;
 
-
 justify-content:center;
-
 
 padding:15px;
 
-
-
 box-sizing:border-box;
 
-
-
-border-radius:25px;
-
-
 }
-
-
 
 
 .tarjeta-frente{
 
-
 background:
-
 
 linear-gradient(
 135deg,
-#3b0013,
-#5e2b97
+#4b0018,
+#5f2380
 );
-
-
 
 color:white;
 
-
 font-size:22px;
 
-
 }
-
-
 
 
 .tarjeta-atras{
 
-
 background:white;
-
-
-transform:rotateY(180deg);
-
-
 
 color:#333;
 
-
+transform:rotateY(180deg);
 
 font-size:15px;
 
-
-line-height:25px;
-
+line-height:24px;
 
 }
 
 
 
-
-
-/*================================*/
-/* ESCENA PREGUNTA */
-/*================================*/
-
+/*===========================*/
+/* Pregunta */
+/*===========================*/
 
 .pregunta{
 
-
 color:white;
-
 
 font-size:38px;
 
-
 line-height:55px;
-
-
 
 text-shadow:
 
-
-0 0 15px #6d1b7b;
-
+0 0 15px purple;
 
 }
-
-
-
-
-.botones-container{
-
-
-margin-top:50px;
-
-
-}
-
 
 
 
 #si,#no{
 
+padding:16px 35px;
 
-padding:18px 35px;
-
-
-font-size:24px;
-
+font-size:22px;
 
 border:none;
 
-
 border-radius:30px;
-
 
 cursor:pointer;
 
-
-margin:20px;
-
+margin:15px;
 
 }
-
 
 
 #si{
 
-
-background:#6d1b7b;
-
+background:#5f2380;
 
 color:white;
 
-
-box-shadow:0 0 20px purple;
-
-
 }
-
-
 
 #no{
 
-
-background:#8b0000;
-
+background:#7a001f;
 
 color:white;
 
-
 }
 
 
 
 
-
-/*================================*/
-/* SOBRE */
-/*================================*/
-
+/*===========================*/
+/* Carta */
+/*===========================*/
 
 .envelope-wrapper{
 
-
 width:340px;
-
-
-height:240px;
-
+height:250px;
 
 margin:auto;
 
-
 }
-
-
 
 
 .envelope{
 
-
 position:relative;
-
 
 width:100%;
 height:100%;
 
-
-
-background:#4b0018;
-
-
+background:#4a0018;
 
 border-radius:15px;
 
-
-
-box-shadow:
-
-
-0 0 30px black;
-
-
 }
-
-
 
 
 .flap{
 
-
 position:absolute;
-
-
 
 top:0;
 left:0;
 
-
-
 border-left:170px solid transparent;
 border-right:170px solid transparent;
 
-border-top:120px solid #6d1b7b;
-
-
+border-top:120px solid #5f2380;
 
 transform-origin:top;
 
-
 transition:1s;
-
 
 z-index:4;
 
-
 }
-
-
 
 
 .pocket{
 
-
 position:absolute;
-
 
 width:100%;
 height:100%;
 
-
-
-background:#5a001d;
-
-
+background:#62001e;
 
 clip-path:polygon(0 0,100% 0,50% 60%);
 
-
 z-index:3;
 
-
 }
-
 
 
 
 .letter{
 
-
 position:absolute;
-
-
 
 left:15px;
 bottom:10px;
 
-
-
 width:310px;
 height:260px;
 
-
-
 background:white;
-
-
 
 padding:20px;
 
-
-
-box-sizing:border-box;
-
-
-
 border-radius:10px;
-
-
 
 overflow-y:auto;
 
-
-
 overflow-x:hidden;
 
-
+box-sizing:border-box;
 
 z-index:2;
 
-
-
 transition:1.2s;
 
-
-
 }
-
 
 
 .letter-text{
 
-
 font-size:16px;
-
 
 line-height:30px;
 
-
-white-space:pre-line;
-
+color:#333;
 
 text-align:left;
 
-
-color:#222;
-
+white-space:pre-line;
 
 }
-
 
 
 
 .envelope.open .flap{
 
-
 transform:rotateX(180deg);
 
-
 }
-
 
 
 .envelope.open .letter{
 
-
-transform:translateY(-150px);
-
+transform:translateY(-140px);
 
 }
 
 
 
+/*===========================*/
+/* Galeria */
+/*===========================*/
 
-/*================================*/
-/* GALERIA */
-/*================================*/
+.galeria-container{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
 
 
 #galeriaFoto{
 
+width:360px;
 
-width:420px;
-
-
-max-width:90vw;
-
-
+max-width:85vw;
 
 border-radius:25px;
 
+margin-top:25px;
 
+transition:1s;
 
 box-shadow:
 
-
-0 0 25px #6d1b7b,
-
-0 0 60px #8b0000;
-
-
-
-margin-top:25px;
-
+0 0 20px purple,
+0 0 50px crimson;
 
 }
 
 
 
-
-/*================================*/
-/* CONTADOR */
-/*================================*/
-
+/*===========================*/
+/* Contador */
+/*===========================*/
 
 #contador{
 
-
-font-size:60px;
-
+font-size:75px;
 
 color:white;
 
+text-shadow:
+
+0 0 15px purple,
+0 0 40px crimson;
+
+}
 
 
-margin-top:40px;
+.texto-contador{
+
+color:white;
+
+font-size:22px;
+
+}
 
 
+
+/*===========================*/
+/* Escena 8 */
+/*===========================*/
+
+#mensajeFinal{
+
+font-size:28px;
+
+line-height:50px;
+
+color:white;
 
 text-shadow:
 
+0 0 10px purple;
 
-0 0 20px #6d1b7b,
-
-0 0 40px #8b0000;
-
-
-
-animation:latir 2s infinite;
-
+min-height:320px;
 
 }
 
 
 
-@keyframes latir{
-
-
-0%{
-transform:scale(1);
-}
-
-50%{
-transform:scale(1.05);
-}
-
-100%{
-transform:scale(1);
-}
-
-}
-
-
-
-
-/*================================*/
-/* ESCENA FINAL */
-/*================================*/
-
+/*===========================*/
+/* Escena 9 */
+/*===========================*/
 
 #final{
 
-
-font-size:65px;
-
-
+font-size:70px;
 
 color:white;
 
-
-
 line-height:90px;
-
-
 
 text-shadow:
 
-
-0 0 20px #6d1b7b,
-
-0 0 40px #8b0000,
-
+0 0 20px #8d48ff,
+0 0 40px crimson,
 0 0 80px purple;
-
-
 
 animation:brillo 2s infinite;
 
+}
+
+
+#firma{
+
+color:#e0c6ff;
+
+font-size:30px;
+
+margin-top:25px;
 
 }
 
+
+#fraseFinal{
+
+color:#ffffff;
+
+font-size:22px;
+
+margin-top:40px;
+
+text-shadow:
+
+0 0 10px purple;
+
+}
 
 
 @keyframes brillo{
 
-
-0%{
-opacity:.6;
-}
-
-50%{
-opacity:1;
-}
-
-100%{
-opacity:.6;
-}
-
+0%{opacity:.6;}
+50%{opacity:1;}
+100%{opacity:.6;}
 
 }
 
 
 
-
-
-/*================================*/
-/* ESTRELLAS */
-/*================================*/
-
+/*===========================*/
+/* Estrellas */
+/*===========================*/
 
 .star{
 
-
 position:absolute;
-
 
 background:white;
 
-
 border-radius:50%;
-
 
 animation:parpadear 2s infinite;
 
-
 z-index:2;
-
 
 }
 
 
 @keyframes parpadear{
 
-
-0%{
-opacity:.2;
-}
-
-50%{
-opacity:1;
-}
-
-100%{
-opacity:.2;
-}
-
+0%{opacity:.2;}
+50%{opacity:1;}
+100%{opacity:.2;}
 
 }
 
 
 
-
-
-/*================================*/
-/* CORAZONES */
-/*================================*/
-
+/*===========================*/
+/* Corazones */
+/*===========================*/
 
 .corazon{
 
-
 position:absolute;
 
-
-font-size:28px;
-
+font-size:24px;
 
 animation:subir 5s linear;
 
-
-z-index:15;
-
+z-index:20;
 
 }
 
 
 @keyframes subir{
 
-
 0%{
 
 transform:translateY(100vh);
-
 opacity:1;
 
 }
 
-
 100%{
 
-
 transform:translateY(-100px);
-
 opacity:0;
 
 }
-
 
 }
