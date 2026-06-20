@@ -168,7 +168,7 @@ function escribirCarta(){
 }
 
 //================================================
-// ESCENA 4
+// ESCENA 4 -> TRANSICIÓN AL SOBRE
 //================================================
 
 const si = document.getElementById("si");
@@ -177,12 +177,15 @@ const boton5 = document.getElementById("boton5");
 si.onclick = () => {
     cambiarEscena("escena4", "escena5");
 
+    // Tiempo prudente para que cargue la escena antes de abrir el sobre
     setTimeout(() => {
         document.querySelector(".envelope").classList.add("open");
 
+        // Espera a que termine de subir la carta completamente para empezar a escribir
         setTimeout(() => {
             escribirCarta();
 
+            // Muestra el botón de continuar una vez que el texto casi finaliza
             setTimeout(() => {
                 boton5.classList.remove("oculto");
             }, 4500);
