@@ -200,22 +200,20 @@ body {
 #no { background: #7a001f; color: white; }
 
 /*==================================================*/
-/* SOBRE Y CARTA ESTILO PREMIUM (ANTI-SCROLLBARS) */
+/* SOBRE Y CARTA ESTILO PREMIUM */
 /*==================================================*/
-.sobre-titulo{
-position:absolute;
-top:-90px;
-left:50%;
-transform:translateX(-50%);
-width:100%;
-text-align:center;
-z-index:50;
-color:white;
-font-size:30px;
-font-weight:normal;
-text-shadow:
-0 0 15px white,
-0 0 25px #ff4d88;
+.sobre-titulo {
+    position: absolute;
+    top: -60px; /* Ajustado para que no se esconda */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+    color: white;
+    font-size: 30px;
+    font-weight: normal;
+    text-shadow: 0 0 15px white, 0 0 25px #ff4d88;
 }
 
 .destaque-nombre {
@@ -227,25 +225,23 @@ text-shadow:
     margin-top: 5px;
 }
 
-.envelope-wrapper{
-
-position:relative;
-width:380px;
-height:260px;
-margin:220px auto 20px auto;
+.envelope-wrapper {
+    position: relative;
+    width: 380px;
+    height: 260px;
+    margin: 220px auto 20px auto;
 }
 
 .envelope {
     position: relative;
     width: 100%;
     height: 100%;
-    background: #30000f; /* Fondo oscuro interno */
+    background: #30000f;
     border-radius: 0 0 12px 12px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 40px rgba(214, 51, 132, 0.25);
     overflow: visible;
 }
 
-/* Solapa Superior - Triángulo dinámico puro sin elementos nativos */
 .flap {
     position: absolute;
     top: 0;
@@ -260,7 +256,6 @@ margin:220px auto 20px auto;
     z-index: 5;
 }
 
-/* Cuerpo frontal del sobre (Laterales e Inferior unidos herméticamente) */
 .pocket {
     position: absolute;
     top: 0;
@@ -275,7 +270,6 @@ margin:220px auto 20px auto;
     z-index: 4;
 }
 
-/* Sello de Corazón */
 .envelope::after {
     content: "❤️";
     position: absolute;
@@ -287,7 +281,6 @@ margin:220px auto 20px auto;
     filter: drop-shadow(0 0 15px #ff1a53);
 }
 
-/* Tarjeta / Hoja de la Carta */
 .letter {
     position: absolute;
     left: 15px;
@@ -300,11 +293,10 @@ margin:220px auto 20px auto;
     z-index: 2;
     transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), height 1.2s ease;
     box-sizing: border-box;
-    overflow: hidden; /* Evita fugas visuales absolutas */
+    overflow: hidden;
     padding: 12px;
 }
 
-/* Borde elegante interno */
 .letter-border {
     width: 100%;
     height: 100%;
@@ -316,15 +308,12 @@ margin:220px auto 20px auto;
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-/* Forzar la eliminación total de barras de scroll en todos los navegadores */
 .letter-border::-webkit-scrollbar {
     display: none;
-}
-.letter-border {
-    -ms-overflow-style: none;  /* IE y Edge */
-    scrollbar-width: none;  /* Firefox */
 }
 
 .letter-heart-top {
@@ -338,25 +327,23 @@ margin:220px auto 20px auto;
     line-height: 28px;
     color: #3d2229;
     text-align: center;
-    white-space: pre-line;
+    white-space: pre-line; /* Clave para interpretar los saltos de línea automáticos */
     font-weight: normal;
     width: 100%;
 }
 
-/* ESTADOS ACTIVOS (ANIMACIONES) */
 .envelope.open .flap {
     transform: rotateX(180deg);
     z-index: 1;
 }
 
 .envelope.open .letter {
-    transform: translateY(-170px); /* Eleva de forma fluida */
+    transform: translateY(-140px); /* Evita que tape el título superior */
     z-index: 3;
-    height: 300px; /* Crece para alojar todo el poema perfectamente */
+    height: 290px;
     box-shadow: 0 -10px 25px rgba(255, 77, 125, 0.25), 0 15px 25px rgba(0,0,0,0.4);
 }
 
-/* Elementos de Adorno Inferiores */
 .decoracion-inferior {
     margin-top: 50px;
     position: relative;
@@ -413,6 +400,40 @@ margin:220px auto 20px auto;
     font-size: 22px;
 }
 
+#contadorAleatorio {
+    font-size: 95px;
+    font-weight: bold;
+    color: white;
+    margin-top: 35px;
+    min-height: 120px;
+    text-shadow: 0 0 15px #9d4dff, 0 0 35px #ff0055, 0 0 70px purple;
+    animation: latirNumero 1s infinite;
+    display: block;
+}
+
+@keyframes latirNumero {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+#respuestaAmor {
+    margin-top: 30px;
+    font-size: 34px;
+    font-weight: bold;
+    color: white;
+    min-height: 50px;
+    text-shadow: 0 0 10px white, 0 0 20px #ff4d88, 0 0 40px purple;
+}
+
+.botones-contador {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
 /*===========================*/
 /* Escena 8 */
 /*===========================*/
@@ -422,6 +443,7 @@ margin:220px auto 20px auto;
     color: white;
     text-shadow: 0 0 10px purple;
     min-height: 320px;
+    white-space: pre-line; /* Permite saltos de línea sin <br> */
 }
 
 /*===========================*/
@@ -490,52 +512,4 @@ margin:220px auto 20px auto;
         transform: translateY(-100px);
         opacity: 0;
     }
-}
-
-/*=============================*/
-/* ESCENA 7 NUEVA */
-/*=============================*/
-
-
-
-@keyframes latirNumero{
-0%{
-transform:scale(1);
-}
-50%{
-transform:scale(1.08);
-}
-100%{
-transform:scale(1);
-}
-}
-#respuestaAmor{
-margin-top:30px;
-font-size:34px;
-font-weight:bold;
-color:white;
-min-height:50px;
-text-shadow:
-0 0 10px white,
-0 0 20px #ff4d88,
-0 0 40px purple;
-}
-.botones-contador{
-margin-top:40px;
-display:flex;
-justify-content:center;
-gap:25px;
-flex-wrap:wrap;
-}
-#contadorAleatorio{
-font-size:95px;
-font-weight:bold;
-color:white;
-margin-top:35px;
-min-height:120px;
-text-shadow:
-0 0 15px #9d4dff,
-0 0 35px #ff0055,
-0 0 70px purple;
-animation:latirNumero 1s infinite;
 }
