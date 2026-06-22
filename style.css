@@ -200,11 +200,11 @@ body {
 #no { background: #7a001f; color: white; }
 
 /*==================================================*/
-/* SOBRE Y CARTA ESTILO PREMIUM */
+/* SOBRE Y CARTA ESTILO PREMIUM (Corregido y Ampliado) */
 /*==================================================*/
 .sobre-titulo {
     position: absolute;
-    top: -60px; /* Ajustado para que no se esconda */
+    top: -110px; /* Ajustado hacia arriba para que no colisione con la carta abierta */
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -227,9 +227,9 @@ body {
 
 .envelope-wrapper {
     position: relative;
-    width: 380px;
-    height: 260px;
-    margin: 220px auto 20px auto;
+    width: 440px;  /* Aumentado de 380px a 440px */
+    height: 300px; /* Aumentado de 260px a 300px */
+    margin: 240px auto 20px auto; /* Mayor margen para balancear el espacio */
 }
 
 .envelope {
@@ -248,9 +248,9 @@ body {
     left: 0;
     width: 0;
     height: 0;
-    border-left: 190px solid transparent;
-    border-right: 190px solid transparent;
-    border-top: 140px solid #5a0c2a;
+    border-left: 220px solid transparent;  /* Recalculado al centro exacto (440 / 2) */
+    border-right: 220px solid transparent; /* Recalculado al centro exacto (440 / 2) */
+    border-top: 160px solid #5a0c2a;       /* Proporcional a la nueva altura */
     transform-origin: top;
     transition: transform 0.9s ease, z-index 0.9s ease;
     z-index: 5;
@@ -262,10 +262,10 @@ body {
     left: 0;
     width: 0;
     height: 0;
-    border-left: 190px solid #4a0018;
-    border-right: 190px solid #4a0018;
-    border-top: 120px solid transparent;
-    border-bottom: 140px solid #4a0018;
+    border-left: 220px solid #4a0018;  /* Recalculado al centro exacto */
+    border-right: 220px solid #4a0018; /* Recalculado al centro exacto */
+    border-top: 140px solid transparent;
+    border-bottom: 160px solid #4a0018; /* Sello visual inferior */
     border-radius: 0 0 12px 12px;
     z-index: 4;
 }
@@ -273,7 +273,7 @@ body {
 .envelope::after {
     content: "❤️";
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 42px;
@@ -283,10 +283,10 @@ body {
 
 .letter {
     position: absolute;
-    left: 15px;
+    left: 20px;
     bottom: 15px;
-    width: 350px;
-    height: 230px;
+    width: 400px;  /* Más ancha para que no se apriete el poema */
+    height: 270px; /* Tamaño base dentro del sobre */
     background: #ffffff;
     border-radius: 15px 15px 10px 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.35);
@@ -294,7 +294,7 @@ body {
     transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), height 1.2s ease;
     box-sizing: border-box;
     overflow: hidden;
-    padding: 12px;
+    padding: 15px;
 }
 
 .letter-border {
@@ -302,7 +302,7 @@ body {
     height: 100%;
     border: 1px dashed #e6afc2;
     border-radius: 12px;
-    padding: 15px 10px;
+    padding: 20px 15px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -323,11 +323,11 @@ body {
 }
 
 .letter-text {
-    font-size: 16.5px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 26px;
     color: #3d2229;
     text-align: center;
-    white-space: pre-line; /* Clave para interpretar los saltos de línea automáticos */
+    white-space: pre-line;
     font-weight: normal;
     width: 100%;
 }
@@ -338,9 +338,9 @@ body {
 }
 
 .envelope.open .letter {
-    transform: translateY(-140px); /* Evita que tape el título superior */
+    transform: translateY(-120px); /* Ajustado sutilmente para quedar debajo del título sin tocarlo */
     z-index: 3;
-    height: 290px;
+    height: 380px; /* Bastante más alta cuando se abre para mostrar todo el texto sin cortes */
     box-shadow: 0 -10px 25px rgba(255, 77, 125, 0.25), 0 15px 25px rgba(0,0,0,0.4);
 }
 
@@ -443,7 +443,7 @@ body {
     color: white;
     text-shadow: 0 0 10px purple;
     min-height: 320px;
-    white-space: pre-line; /* Permite saltos de línea sin <br> */
+    white-space: pre-line;
 }
 
 /*===========================*/
