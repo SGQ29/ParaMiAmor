@@ -9,139 +9,209 @@
 <body>
     <div class="overlay"></div>
     <div id="stars"></div>
-
+    <!-- ESCENA 1 -->
     <div class="container" id="escena1">
         <img id="fotoPrincipal" src="amor.jpg">
         <h1 id="texto"></h1>
-        <button id="boton1" class="btn-principal">✨Presiona aquí, preciosa ✨</button>
+        <button id="boton1" class="btn-principal">
+            ✨Presiona aquí, preciosa ✨
+        </button>
     </div>
+    <!-- ESCENA 2 -->
+
     <div class="container oculto" id="escena2">
-        <h1 class="titulo-escena">Desde que llegaste a mi vida...</h1>
+        <h1 class="titulo-escena">
+            Desde que llegaste a mi vida...
+        </h1>
         <p class="texto-intermedio">
             Cada segundo contigo ha sido especial.<br>
             Has llenado mis días de tranquilidad,<br>
             sonrisas y momentos bonitos.<br><br>
             Y sinceramente eres una de las personas<br>
-            más maravillosas que he conocido.<br>
+            más maravillosas que he conocido.
         </p>
-        <button id="boton2" class="btn-principal">Continuar ❤️</button>
+        <button id="boton2" class="btn-principal">
+            Continuar ❤️
+        </button>
     </div>
+    <!-- ESCENA 3 -->
 
     <div class="container oculto" id="escena3">
-        <h1 class="titulo-escena">Tres cosas que me vuelven loco de ti</h1>
-        <p class="subtitulo-escena">(Presiona para averiguar)</p>
-
+        <h1 class="titulo-escena">
+            Tres cosas que me vuelven loco de ti
+        </h1>
+        <p class="subtitulo-escena">
+            (Presiona para averiguar)
+        </p>
         <div class="tarjetas-container">
-            <div class="tarjeta" onclick="revelarTarjeta(this)">
+            <div class="tarjeta"
+                 onclick="revelarTarjeta(this)">
                 <div class="tarjeta-interior">
-                    <div class="tarjeta-frente">✨ Tu sonrisa</div>
-                    <div class="tarjeta-atras">Es capaz de alegrarme el día completo.</div>
+                    <div class="tarjeta-frente">
+                        ✨ Tu sonrisa
+                    </div>
+                    <div class="tarjeta-atras">
+                        Es capaz de alegrarme el día completo.
+                    </div>
                 </div>
             </div>
-            <div class="tarjeta" onclick="revelarTarjeta(this)">
+            <div class="tarjeta"
+                 onclick="revelarTarjeta(this)">
                 <div class="tarjeta-interior">
-                    <div class="tarjeta-frente">👀 Tus ojitos</div>
-                    <div class="tarjeta-atras">Podría perderme en ellos toda la eternidad.</div>
+                    <div class="tarjeta-frente">
+                        👀 Tus ojitos
+                    </div>
+                    <div class="tarjeta-atras">
+                        Podría perderme en ellos toda la eternidad.
+                    </div>
                 </div>
             </div>
-            <div class="tarjeta" onclick="revelarTarjeta(this)">
+            <div class="tarjeta"
+                 onclick="revelarTarjeta(this)">
                 <div class="tarjeta-interior">
-                    <div class="tarjeta-frente">❤️ Tu esencia</div>
-                    <div class="tarjeta-atras">Tu ternura hace que me sienta en casa.</div>
+                    <div class="tarjeta-frente">
+                        ❤️ Tu esencia
+                    </div>
+                    <div class="tarjeta-atras">
+                        Tu ternura hace que me sienta en casa.
+                    </div>
                 </div>
             </div>
         </div>
-
-        <button id="boton3" class="btn-principal oculto">Pero antes de continuar, me gustaría preguntarte algo 👀</button>
+        <button id="boton3"
+                class="btn-principal oculto">
+            Pero antes de continuar, me gustaría preguntarte algo 👀
+        </button>
     </div>
-
-    <div class="container oculto" id="escena4">
+    <!-- ESCENA 4 -->
+    <div class="container oculto"
+         id="escena4">
         <h1 class="pregunta">
-            ¿Quién es la chica más hermosa<br>
+            ¿Quién es la chica más hermosa
+            <br>
             del universo?
         </h1>
         <div class="botones-container">
-            <button id="si">😊 Yo, obviamente</button>
-            <button id="no">🤔 Otra persona</button>
+            <button id="si">
+                😊 Yo, obviamente
+            </button>
+            <button id="no">
+                🤔 Otra persona
+            </button>
         </div>
     </div>
-
-    <div class="container oculto" id="escena5">
-        
-        <h2 class="sobre-titulo">Te quiero muchísimo <br> <span class="destaque-nombre">Jacqueline ❤️</span></h2>
-        
+    <!-- ESCENA 5 -->
+    <div class="container oculto"
+         id="escena5">
+        <h2 class="sobre-titulo">
+            Te quiero muchísimo
+            <br>
+            <span class="destaque-nombre">
+                Mi amor ❤️
+            </span>
+        </h2>
         <div class="envelope-wrapper">
             <div class="envelope">
                 <div class="flap"></div>
                 <div class="pocket"></div>
                 <div class="letter">
                     <div class="letter-border">
-                        <div class="letter-heart-top">✨ 🤍 ✨</div>
-                        <div class="letter-text" id="textoCarta"></div>
+                        <div class="letter-heart-top">
+                            ✨ 🤍 ✨
+                        </div>
+                        <div class="letter-text"
+                             id="textoCarta"></div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="decoracion-inferior">
-            <div class="corazon-centro">❤️</div>
+            <div class="corazon-centro">
+                ❤️
+            </div>
             <div class="lineas-decorativas"></div>
         </div>
-
-        <button id="boton5" class="btn-principal oculto">📷Nuestros mejores momentos❤️</button>
-    </div>
-
-    <div class="container oculto" id="escena6">
-        <h1 class="titulo-escena">Los recuerdos más bonitos ❤️</h1>
-        <div class="galeria-container">
-            <img id="galeriaFoto" src="amor.jpg">
-            <div id="indicadores"></div>
-        </div>
-        <button id="boton6" class="btn-principal">Continuar ✨</button>
-    </div>
-
-<div class="container oculto" id="escena7">
-    <h1 class="titulo-escena">
-        ¿Sabes cuántos días quiero volver a verte?
-    </h1>
-    <div id="contadorAleatorio">
-        000
-    </div>
-    <p id="respuestaAmor">
-    </p>
-    <div class="botones-contador">
-        <button id="detener"
-        class="btn-principal">
-            ❤️ Parar
+        <button id="boton5"
+                class="btn-principal oculto">
+            📷 Nuestros mejores momentos ❤️
         </button>
-        <button id="boton7"
-        class="btn-principal oculto">
+    </div>
+    <!-- ESCENA 6 -->
+    <div class="container oculto"
+         id="escena6">
+        <h1 class="titulo-escena">
+            Los recuerdos más bonitos ❤️
+        </h1>
+        <div class="galeria-container">
+
+            <img id="galeriaFoto"
+                 src="amor.jpg">
+            <div id="indicadores"></div>
+
+        </div>
+        <button id="boton6"
+                class="btn-principal">
             Continuar ✨
         </button>
     </div>
-</div>
-
-    <div class="container oculto" id="escena8">
-        <h1 class="titulo-escena">Para ti...</h1>
+    <!-- ESCENA 7 -->
+    <div class="container oculto"
+         id="escena7">
+        <h1 class="titulo-escena">
+            ¿Sabes cuántos días quiero volver a verte?
+        </h1>
+        <div id="contadorAleatorio">
+            000
+        </div>
+        <p id="respuestaAmor"></p>
+        <div class="botones-contador">
+            <button id="detener"
+                    class="btn-principal">
+                ❤️ Parar
+            </button>
+            <button id="boton7"
+                    class="btn-principal oculto">
+                Continuar ✨
+            </button>
+        </div>
+    </div>
+    <!-- ESCENA 8 -->
+    <div class="container oculto"
+         id="escena8">
+        <h1 class="titulo-escena">
+            Para ti...
+        </h1>
         <div class="mensaje-elegante">
             <p id="mensajeFinal"></p>
         </div>
-        <button id="boton8" class="btn-principal">🌌 Una última sorpresa</button>
+        <button id="boton8"
+                class="btn-principal">
+            🌌 Una última sorpresa
+        </button>
     </div>
-
-    <div class="container oculto" id="escena9">
+    <!-- ESCENA 9 -->
+    <div class="container oculto"
+         id="escena9">
         <div class="final-card">
-            <h1 id="final">Te quiero muchísimo<br><br>Mi Chio ❤️</h1>
-            <p id="firma">Siempre...<br></p>
-            <p id="fraseFinal">✨ Y mientras exista una estrella en el cielo,<br> 
-                habrá una razón más para quererte.</p>
+            <h1 id="final">
+                Te quiero muchísimo
+                <br><br>
+                Jacqueline ❤️
+            </h1>
+            <p id="firma">
+                Siempre...
+            </p>
+            <p id="fraseFinal">
+                ✨ Y mientras exista una estrella en el cielo,
+                <br>
+                habrá una razón más para quererte.
+            </p>
         </div>
     </div>
-
     <audio id="musica" loop>
-        <source src="musica.mp3" type="audio/mpeg">
+        <source src="musica.mp3"
+                type="audio/mpeg">
     </audio>
-
     <script src="script.js"></script>
 </body>
 </html>
