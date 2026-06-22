@@ -310,15 +310,15 @@ boton7.onclick = () => {
 //================================================
 
 const mensajeFinal = `
-Eres mi niña.<br>
-Mi preciosa.<br>
-Mi corazón bonito.<br>
-Mi lugar seguro.<br>
+Eres mi niña.
+Mi preciosa.
+Mi corazón bonito.
+Mi lugar seguro.
 
-Gracias por cada sonrisa.<br>
-Gracias por existir.<br>
+Gracias por cada sonrisa.
+Gracias por existir.
 
-Con muchísimo cariño.<br>
+Con muchísimo cariño.
 
 Polar ❤️
 `;
@@ -328,7 +328,8 @@ const mensajeFinalElemento = document.getElementById("mensajeFinal");
 
 function escribirMensaje(){
     if(mf < mensajeFinal.length){
-        mensajeFinalElemento.innerHTML += mensajeFinal.charAt(mf);
+       mensajeFinalElemento.innerHTML +=
+mensajeFinal.charAt(mf).replace(/\n/g,"<br>");
         mf++;
         setTimeout(escribirMensaje, 45);
     }
