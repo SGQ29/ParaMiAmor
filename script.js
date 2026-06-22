@@ -242,27 +242,27 @@ boton6.onclick = () => {
     cambiarEscena("escena6", "escena7");
     iniciarContador();
 };
-document.getElementById("detener").onclick=()=>{
-clearInterval(cronometro);
-document.getElementById(
-"contadorAleatorio"
-).style.fontSize="70px";
-document.getElementById(
-"contadorAleatorio"
-).innerHTML="❤️";
-document.getElementById(
-"respuestaAmor"
-).innerHTML=
-"Todos los días quiero verte ❤️";
-document.getElementById(
-"boton7"
-).classList.remove(
-"oculto"
-);
-document.getElementById(
-"detener"
-).style.display="none";
-}
+document.getElementById("detener").onclick = () => {
+
+    clearInterval(cronometro);
+
+    document.getElementById("contadorAleatorio").style.fontSize="70px";
+
+    document.getElementById("contadorAleatorio").innerHTML="❤️";
+
+
+    document.getElementById("respuestaAmor").innerHTML=
+    "Todos los días quiero verte ❤️";
+
+
+    document.getElementById("boton7")
+    .classList.remove("oculto");
+
+
+    document.getElementById("detener")
+    .style.display="none";
+
+};
 document.getElementById(
 "respuestaAmor"
 )
