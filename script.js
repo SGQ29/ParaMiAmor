@@ -134,7 +134,7 @@ no.addEventListener("mouseover", mover);
 no.addEventListener("touchstart", mover);
 
 //================================================
-// CARTA
+// CARTA (Usa texto plano, el salto de línea lo maneja el CSS con white-space)
 //================================================
 
 const carta = `
@@ -156,7 +156,7 @@ const textoCarta = document.getElementById("textoCarta");
 
 function escribirCarta(){
     if(p < carta.length){
-        textoCarta.innerHTML += carta.charAt(p);
+        textoCarta.textContent += carta.charAt(p);
         p++;
         setTimeout(escribirCarta, 40);
     }
@@ -242,59 +242,29 @@ boton6.onclick = () => {
     cambiarEscena("escena6", "escena7");
     iniciarContador();
 };
-document.getElementById("detener").onclick = () => {
 
-    clearInterval(cronometro);
-
-    document.getElementById("contadorAleatorio").style.fontSize="70px";
-
-    document.getElementById("contadorAleatorio").innerHTML="❤️";
-
-
-    document.getElementById("respuestaAmor").innerHTML=
-    "Todos los días quiero verte ❤️";
-
-
-    document.getElementById("boton7")
-    .classList.remove("oculto");
-
-
-    document.getElementById("detener")
-    .style.display="none";
-
-};
-document.getElementById(
-"respuestaAmor"
-)
-.innerHTML=
-"Todos los días quiero verte ❤️";
-document.getElementById(
-"boton7"
-)
-.classList.remove(
-"oculto"
-);
-document.getElementById(
-"detener"
-)
-.style.display="none";
-};
 //================================================
-// CONTADOR
+// CONTADOR Y SU BOTÓN DETENER (Corregido y sin duplicados)
 //================================================
 let cronometro;
+
 function iniciarContador(){
-const numero =
-document.getElementById("contadorAleatorio");
-cronometro = setInterval(()=>{
-let valor = Math.floor(
-Math.random()*999
-);
-numero.innerHTML=
-valor.toString()
-.padStart(3,'0');
-},70);
+    const numero = document.getElementById("contadorAleatorio");
+    cronometro = setInterval(()=>{
+        let valor = Math.floor(Math.random()*999);
+        numero.innerHTML = valor.toString().padStart(3,'0');
+    }, 70);
 }
+
+document.getElementById("detener").onclick = () => {
+    clearInterval(cronometro);
+    document.getElementById("contadorAleatorio").style.fontSize = "70px";
+    document.getElementById("contadorAleatorio").innerHTML = "❤️";
+    document.getElementById("respuestaAmor").innerHTML = "Todos los días quiero verte ❤️";
+    document.getElementById("boton7").classList.remove("oculto");
+    document.getElementById("detener").style.display = "none";
+};
+
 //================================================
 // ESCENA 7
 //================================================
@@ -328,8 +298,7 @@ const mensajeFinalElemento = document.getElementById("mensajeFinal");
 
 function escribirMensaje(){
     if(mf < mensajeFinal.length){
-       mensajeFinalElemento.innerHTML +=
-mensajeFinal.charAt(mf).replace(/\n/g,"<br>");
+        mensajeFinalElemento.textContent += mensajeFinal.charAt(mf);
         mf++;
         setTimeout(escribirMensaje, 45);
     }
@@ -341,11 +310,11 @@ boton8.onclick = () => {
 };
 
 //================================================
-// ESCENA 9
+// ESCENA 9 (Corregido para coincidir bien con tu HTML)
 //================================================
 
 document.getElementById("final").innerHTML = `
 Te quiero muchísimo
 <br><br>
-Jacqueline ❤️
+Mi Chio ❤️
 `;
