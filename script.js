@@ -10,7 +10,7 @@ Y espero que me regales unos minutitos de tu tiempo ❤️
 
 let i = 0;
 let texto = "";
-let ejecutorEscritura; // Variable para pausar el hilo si avanza de escena
+let ejecutorEscritura; 
 
 function escribir() {
     if (i < mensaje.length) {
@@ -33,8 +33,8 @@ escribir();
 function estrellas() {
     const fondo = document.getElementById("stars");
     if (!fondo) return;
-    const fragmento = document.createDocumentFragment(); // Evita saturar el DOM
-    for(let i=0; i<80; i++){ // Bajado a 80 para mejor rendimiento en móviles
+    const fragmento = document.createDocumentFragment(); 
+    for(let i=0; i<80; i++){ 
         let s = document.createElement("div");
         s.className = "star";
         s.style.left = Math.random()*100+"vw";
@@ -53,7 +53,6 @@ estrellas();
 //================================================
 
 function corazones(){
-    // Si la pestaña no está activa, no creamos corazones para no saturar memoria
     if (document.hidden) return; 
 
     let c = document.createElement("div");
@@ -62,7 +61,6 @@ function corazones(){
     c.style.left = Math.random()*90+"vw";
     document.body.appendChild(c);
     
-    // Eliminación absoluta del elemento del DOM
     setTimeout(() => {
         if(c && c.parentNode) {
             c.remove();
@@ -70,7 +68,6 @@ function corazones(){
     }, 4500);
 }
 
-// Intervalo controlado
 let intervaloCorazones = setInterval(corazones, 2000);
 
 //================================================
@@ -92,7 +89,7 @@ const boton1 = document.getElementById("boton1");
 const musica = document.getElementById("musica");
 
 boton1.onclick = () => {
-    clearTimeout(ejecutorEscritura); // Frena el proceso de la primera máquina de escribir
+    clearTimeout(ejecutorEscritura); 
     if(musica) {
         musica.play().catch(e => console.log("Audio esperando interacción"));
     }
@@ -187,29 +184,44 @@ function escribirCarta(){
 }
 
 //================================================
-// ESCENA 4 -> TRANSICIÓN AL SOBRE
+// ESCENA 4 -> TRANSICIÓN AL SOBRE CERRADO
 //================================================
 
 const si = document.getElementById("si");
+const btnAbrirSobre = document.getElementById("btnAbrirSobre");
+const tituloSobre = document.getElementById("tituloSobre");
 const boton5 = document.getElementById("boton5");
 
 if(si) {
     si.onclick = () => {
+        // Pasa a la escena 5 pero el sobre se mantiene cerrado y espera al botón ABRIR
         cambiarEscena("escena4", "escena5");
+    };
+}
 
+// LÓGICA DE APERTURA MANUAL DEL SOBRE
+if(btnAbrirSobre) {
+    btnAbrirSobre.onclick = () => {
+        // Ocultamos el botón "ABRIR" inmediatamente
+        btnAbrirSobre.classList.add("oculto");
+        
+        // Mostramos el título hermoso de fondo
+        if(tituloSobre) tituloSobre.classList.remove("oculto");
+
+        // Abrimos el sobre e iniciamos animación
+        const sobre = document.querySelector(".envelope");
+        if(sobre) sobre.classList.add("open");
+
+        // Tiempo proporcional para desplegar y empezar a escribir el texto
         setTimeout(() => {
-            const sobre = document.querySelector(".envelope");
-            if(sobre) sobre.classList.add("open");
+            escribirCarta();
 
+            // Aparece el botón de la siguiente escena cuando el texto termine de procesarse
             setTimeout(() => {
-                escribirCarta();
+                if(boton5) boton5.classList.remove("oculto");
+            }, 5000);
 
-                setTimeout(() => {
-                    if(boton5) boton5.classList.remove("oculto");
-                }, 4500);
-
-            }, 1200);
-        }, 800);
+        }, 1200);
     };
 }
 
@@ -220,7 +232,7 @@ if(si) {
 if(boton5) {
     boton5.onclick = () => {
         cambiarEscena("escena5", "escena6");
-        iniciarGaleria(); // Inicia el ciclo de fotos SOLO cuando entra a la escena
+        iniciarGaleria(); 
     };
 }
 
@@ -269,7 +281,7 @@ function iniciarGaleria() {
 const boton6 = document.getElementById("boton6");
 if(boton6) {
     boton6.onclick = () => {
-        clearInterval(intervaloGaleria); // Detiene la galería para ahorrar procesador
+        clearInterval(intervaloGaleria); 
         cambiarEscena("escena6", "escena7");
         iniciarContador();
     };
@@ -352,7 +364,6 @@ const boton8 = document.getElementById("boton8");
 if(boton8) {
     boton8.onclick = () => {
         cambiarEscena("escena8", "escena9");
-        // Cambiar el nombre dinámico en el cierre
         const finTxt = document.getElementById("final");
         if(finTxt) {
             finTxt.innerHTML = `Te quiero muchísimo<br><br>Mi Chio ❤️`;
